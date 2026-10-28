@@ -491,7 +491,8 @@
   }
 
   /* ---------- Navigation targets ---------- */
-  function utils() { return ['art', 'apps', 'settings']; }
+  // This fork targets a non-Frame TV (no org.tizen.art-app), so Art Mode is not offered.
+  function utils() { return ['apps', 'settings']; }
   /* prev/next run along the apps; out goes to the controls, inn comes back (or to a per-app action). */
   function axes() {
     var v = S.c.layout === 'list';
@@ -1302,7 +1303,9 @@
   function fieldTransform(el, x, y, width, height) {
     el._placement = { x: x, y: y, width: width, height: height };
     el.style.transformOrigin = (x + width / 2) + 'px ' + (y + height / 2) + 'px';
-    el.style.transform = 'translate3d(' + (-x) + 'px,' + (-y) + 'px,0)' + (S.c.bg === 'photo' && S.c.material === 'tint' && !REDUCED_MOTION ? ' scale(1.04)' : '');
+    // 2D translate (not translate3d): on older Tizen engines a 3D transform promotes the field to its
+    // own compositing layer, which escapes the lens/plate's rounded clip (see PR #11 upstream).
+    el.style.transform = 'translate(' + (-x) + 'px,' + (-y) + 'px)' + (S.c.bg === 'photo' && S.c.material === 'tint' && !REDUCED_MOTION ? ' scale(1.04)' : '');
   }
   function renderList(hs) {
     var items = hs.items, n = items.length, compact = hs.mode === 'arrange', pitch = compact ? PH_COMPACT_PITCH : PH_PITCH;

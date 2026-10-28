@@ -395,7 +395,9 @@ html,body{width:100%;height:100%;overflow:hidden;background:#000}
 .f-type .quiet-utils .u.is-focus .u-content{transform:scale(1.05)}
 .f-type .util-focus-label.is-on{transform:scale(1.05);transform-origin:50% 50%}
 .f-type.l-list .util-focus-label.is-on{transform-origin:100% 50%}
-.ut-lens{left:0;top:0;height:60px;border-radius:30px;pointer-events:none;-webkit-clip-path:inset(0 round 30px);clip-path:inset(0 round 30px)}
+/* Older Tizen engines do not clip the composited glass field via overflow or clip-path; an opaque
+   -webkit-mask flattens it into a buffer that honours the rounded clip (upstream PR #11). */
+.ut-lens{left:0;top:0;height:60px;border-radius:30px;pointer-events:none;-webkit-clip-path:inset(0 round 30px);clip-path:inset(0 round 30px);-webkit-mask-image:-webkit-linear-gradient(#000,#000)}
 .l-list .ut-lens .scrim{display:none}
 .l-list .quiet-utils.is-both .u-label{max-width:330px}
 .l-list .quiet-utils.is-both .u .ico{width:36px;height:36px}

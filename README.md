@@ -2,6 +2,8 @@
 
 A quieter home screen for Samsung The Frame. Your apps, a photograph and the time, with an interface made for the TV remote.
 
+> **This fork** is adapted for a 2020 Samsung UA55TU8300 (Tizen 5.5, not a Frame). See [docs/my-tv.md](docs/my-tv.md) for what changed and how to install it.
+
 ![CleanFrame browser preview using the bundled Manrope font](docs/images/cleanframe-dock.jpg)
 
 I built CleanFrame for one TV: my own Samsung The Frame, running Tizen. I'm sharing the code and setup notes as a starting point for other people to build on.
